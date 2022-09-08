@@ -16,12 +16,16 @@ export default function Home() {
   //will be called by Cell component
   const paint = (xPos, yPos) => {
     //copy from old 2d Array
-    const newPixels = CanvasLib.copyCanvas(pixels);
     //your code here
+    const newPixels = CanvasLib.copyCanvas(pixels);
+    newPixels[yPos][xPos] = selColor;
+    setPixels(newPixels);
   };
 
   const clear = () => {
     //your code here
+    const clearPixels = CanvasLib.createEmptyCanvas();
+    setPixels(clearPixels);
     //Hint : use CanvasLib.createEmptyCanvas()
   };
 
@@ -36,7 +40,12 @@ export default function Home() {
           <button className="btn btn-dark" onClick={clear}>
             Clear
           </button>
-          <button className="btn btn-dark">Random Color</button>
+          <button
+            className="btn btn-dark"
+            onClick={() => setPixels(CanvasLib.createRandomCanvas())}
+          >
+            Random Color
+          </button>
         </div>
       </PainterContext.Provider>
     </div>

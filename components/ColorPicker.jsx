@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { PainterContext } from "../contexts/PainterContext";
 
 export default function ColorPicker(props) {
@@ -13,7 +13,8 @@ export default function ColorPicker(props) {
         width: "50px",
         height: "50px",
         borderStyle: "solid",
-
+        borderColor: selColor === color ? "magenta" : "black",
+        borderWidth: selColor === color ? "7px" : "2px",
         //if this color is selected, show this
         //borderColor: "magenta",
         //borderWidth: "7px",
@@ -25,6 +26,7 @@ export default function ColorPicker(props) {
       onClick={() => {
         //set selecting color when clicked
         //your code here
+        setSelColor(color);
       }}
     />
   );
